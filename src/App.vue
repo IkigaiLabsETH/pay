@@ -2,7 +2,7 @@
 import code from '@code-wallet/elements';
 import { onMounted, ref } from 'vue'
 
-const el = ref(null);
+const el = ref<HTMLElement | null>(null);
 
 onMounted(() => {
   const { button } = code.elements.create('button', {
@@ -11,7 +11,9 @@ onMounted(() => {
     amount: 0.05,
   });
 
+  if (el.value && button) {
   button.mount(el.value);
+}
 })
 </script>
 
